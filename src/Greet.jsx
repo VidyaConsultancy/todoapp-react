@@ -7,16 +7,25 @@ export class Greet extends React.Component {
     console.log(props);
     this.state = {
       timer: null,
+      timer2: null,
+      timer3: null,
+      timer4: null,
     };
-    const interval = setInterval(() => {
-      this.setState({ timer: new Date().toISOString() });
-    }, 1000);
-    setTimeout(() => {
-        clearInterval(interval);
-    }, 10000);
+    this.anotherproperty = "somevalue";
+    this.updateAnotherProperty();
+  }
+
+  updateAnotherProperty() {
+    this.anotherproperty = "some another value";
+    // this.state = { timer: new Date().toISOString() }
+    this.setState({
+      timer: new Date().toISOString(),
+      timer2: new Date().toISOString(),
+    });
   }
 
   render() {
+    console.log("render method");
     return (
       <>
         <h1>Hello {this.props.name}</h1>
