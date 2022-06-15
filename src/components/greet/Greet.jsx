@@ -1,5 +1,5 @@
 import React from "react";
-import { Timer } from "./Timer";
+import { Timer } from "../timer/Timer";
 
 export class Greet extends React.Component {
   constructor(props) {

@@ -1,0 +1,10 @@
+.todos {
+    max-width: 500px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 1em 2em;
+    background-color: #ffffff;
+}
+.todos-item--completed {
+    text-decoration: line-through;
+}
