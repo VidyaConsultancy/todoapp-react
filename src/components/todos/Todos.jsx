@@ -1,18 +1,26 @@
 import { useState } from "react";
+import { Todo } from "./Todo";
 import "./Todos.css";
 
 export const Todos = () => {
   const [todoItem, setTodoItem] = useState("");
-  const todos = [];
+  const [todos, setTodos] = useState([]);
   const handleTodoSubmit = (e) => {
     e.preventDefault();
-    // const todo = document.getElementById("todo").value;
-    console.log(todoItem);
+    if(todoItem.trim().length === 0) {
+      console.error('Empty todo is not allowed');
+      return;
+    };
+    const todo = new Todo(todoItem, new Date().toISOString());
+    const updatedTodos = [...todos, todo];
+    setTodos(updatedTodos);
+    setTodoItem("");
   }
-  
+
   const updateTodoItemData = (e) => {
     setTodoItem(e.target.value);
   };
+
   return (
     <div className="todos">
       <div className="todos__header">
@@ -22,6 +30,7 @@ export const Todos = () => {
         <ul className="todos-list">
           {todos.map((todo) => (
             <li
+              key={todo.id}
               className={`todos-item ${
                 todo.isCompleted ? "todos-item--completed" : ""
               }`}
