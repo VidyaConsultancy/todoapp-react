@@ -12,10 +12,11 @@ export class Greet extends React.Component {
       timer4: null,
     };
     this.anotherproperty = "somevalue";
-    this.updateAnotherProperty();
+    this.headingRef = React.createRef();
   }
 
-  updateAnotherProperty() {
+  updateAnotherProperty = () => {
+    console.log(this.headingRef.current);
     this.anotherproperty = "some another value";
     // this.state = { timer: new Date().toISOString() }
     this.setState({
@@ -28,8 +29,9 @@ export class Greet extends React.Component {
     console.log("render method");
     return (
       <>
-        <h1>Hello {this.props.name}</h1>
+        <h1 ref={this.headingRef}>Hello {this.props.name}</h1>
         <Timer timer={this.state.timer} />
+        <button onClick={this.updateAnotherProperty}>Click Me!</button>
       </>
     );
   }
