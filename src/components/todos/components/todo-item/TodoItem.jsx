@@ -9,17 +9,22 @@ export const TodoItem = ({ todo, onTodoDelete }) => {
   return (
     <li
       key={todo.id}
-      className={`todos-item ${
-        todo.isCompleted ? "todos-item--completed" : ""
-      }`}
+      className={`todo-item ${todo.isCompleted ? "todo-item--completed" : ""}`}
     >
-      {todo.todo} | <span>{todo.dueDate}</span>
-      <Link to={"/todos/" + todo.id}>
-        <FontAwesomeIcon icon={faPen} />
-      </Link>
-      <button onClick={handleTodoDelete}>
-        <FontAwesomeIcon icon={faTrash} />
-      </button>
+      <div className="todo-content">
+        {todo.todo}
+        <div className="todo-due">
+          {todo.dueDate}
+        </div>
+      </div>
+      <div className="todo-action">
+        <Link to={"/todos/" + todo.id}>
+          <FontAwesomeIcon icon={faPen} />
+        </Link>
+        <button onClick={handleTodoDelete} className="btn-delete">
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+      </div>
     </li>
   );
 };

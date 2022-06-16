@@ -5,7 +5,7 @@ export const TodoList = ({ todos, handleTodoDelete }) => {
     handleTodoDelete(todoId);
   };
   return (
-    <ul className="todos-list">
+    <ul className="todo-list">
       {todos.map((todo) => (
         <TodoItem todo={todo} key={todo.id} onTodoDelete={onTodoDelete} />
       ))}

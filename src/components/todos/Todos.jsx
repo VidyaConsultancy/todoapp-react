@@ -66,25 +66,37 @@ export const Todos = () => {
         <TodoList todos={todos} handleTodoDelete={handleTodoDelete} />
       </div>
       <div className="todos__footer">
-        <form className="todos-form" onSubmit={handleTodoSubmit} ref={todoRef}>
-          <input
-            type="text"
-            name="todo"
-            id="todo"
-            placeholder="Enter todo"
-            className="form-control"
-            value={todoItem}
-            onChange={updateTodoItemData}
-          />
-          <input
-            type="datetime-local"
-            name="dueDate"
-            id="dueDate"
-            value={todoDueDate}
-            onChange={handleDueDateChange}
-            min={today}
-          />
-          <button type="submit">Submit</button>
+        <form className="todo-form" onSubmit={handleTodoSubmit} ref={todoRef}>
+          <div className="input-group">
+            <label htmlFor="todo">What you want to do?</label>
+            <input
+              type="text"
+              name="todo"
+              id="todo"
+              placeholder="What you want to do?"
+              className="input-control"
+              value={todoItem}
+              onChange={updateTodoItemData}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="dueDate">When it is due?</label>
+            <input
+              placeholder="when it is due?"
+              type="datetime-local"
+              name="dueDate"
+              id="dueDate"
+              className="input-control"
+              value={todoDueDate}
+              onChange={handleDueDateChange}
+              min={today}
+            />
+          </div>
+          <div className="input-group">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
