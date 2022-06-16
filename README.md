@@ -6,8 +6,9 @@ Simple todo application using MERN.
 - [x] create a todo - must have
 - [] update todo status completed/not completed - must have
 - [] edit a todo - must have
-- [] set due date - must have
-- [] delete a todo - must have
+- [x] set due date - must have
+- [x] delete a todo - must have
+- [x] ability to navigate or have multiple routes
 
 **Phase II**
 category/tags - nice to have
