@@ -18,5 +18,15 @@ export const Navbar = () => (
         Greet
       </NavLink>
     </li>
+    <li className="navbar-item">
+      <NavLink className="navbar-link" to={"/sign-in"}>
+        Sign In
+      </NavLink>
+    </li>
+    <li className="navbar-item">
+      <NavLink className="navbar-link" to={"/sign-up"}>
+        Sign Up
+      </NavLink>
+    </li>
   </menu>
 );

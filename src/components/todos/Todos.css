@@ -8,14 +8,6 @@
   flex-direction: column;
   gap: 14px;
 }
-.todos__title {
-  border-bottom: 3px double currentColor;
-}
-.todo-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 .todo-list {
   padding: 0;
   list-style: none;

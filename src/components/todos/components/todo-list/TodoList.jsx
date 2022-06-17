@@ -7,7 +7,7 @@ export const TodoList = ({ todos, handleTodoDelete }) => {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
-        <TodoItem todo={todo} key={todo.id} onTodoDelete={onTodoDelete} />
+        <TodoItem todo={todo} key={todo._id} onTodoDelete={onTodoDelete} />
       ))}
     </ul>
   );
