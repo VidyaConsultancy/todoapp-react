@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import { Todo } from "./Todo";
 import { TodoList } from "./components/todo-list/TodoList";
 import "./Todos.css";
 
@@ -42,8 +41,20 @@ export const Todos = () => {
   };
 
   const handleTodoDelete = (todoId) => {
-    const filteredTodos = todos.filter(({ id }) => id !== todoId);
-    setTodos(filteredTodos);
+    const token = localStorage.getItem("accessToken");
+    axios
+      .delete(`http://localhost:3001/api/todos/${todoId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.success) {
+          const filteredTodos = todos.filter(({ _id }) => _id !== todoId);
+          setTodos(filteredTodos);
+        }
+      })
+      .then((error) => console.error(error));
   };
 
   useEffect(() => {

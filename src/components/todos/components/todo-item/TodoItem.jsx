@@ -4,21 +4,18 @@ import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export const TodoItem = ({ todo, onTodoDelete }) => {
   const handleTodoDelete = () => {
-    onTodoDelete(todo.id);
+    onTodoDelete(todo._id);
   };
   return (
     <li
-      key={todo.id}
+      key={todo._id}
       className={`todo-item ${todo.isCompleted ? "todo-item--completed" : ""}`}
     >
       <div className="todo-content">
         {todo.todo}
-        <div className="todo-due">
-          {todo.dueDate}
-        </div>
       </div>
       <div className="todo-action">
-        <Link to={"/todos/" + todo.id}>
+        <Link to={"/todos/" + todo._id}>
           <FontAwesomeIcon icon={faPen} />
         </Link>
         <button onClick={handleTodoDelete} className="btn-delete">
