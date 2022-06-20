@@ -1,10 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+// import { loginStart } from "../../store/auth/actions";
+import { loginStart } from "../../store/auth/slice";
 import "./SignIn.css";
 
 export const SignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState(false);
 
@@ -19,6 +23,7 @@ export const SignIn = () => {
       return;
     }
     setFormError(false);
+    dispatch(loginStart());
     axios
       .post("http://localhost:3001/api/login", user, {
         headers: { "content-type": "application/json" },
@@ -28,7 +33,7 @@ export const SignIn = () => {
           setUser({ email: "", password: "" });
           const token = response.data.data.token;
           localStorage.setItem("accessToken", token);
-          localStorage.setItem("user", JSON.stringify(response.data.data.user))
+          localStorage.setItem("user", JSON.stringify(response.data.data.user));
           sessionStorage.setItem("accessToken", token);
           navigate("/todos");
         }
