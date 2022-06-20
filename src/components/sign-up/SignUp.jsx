@@ -48,7 +48,7 @@ export const SignUp = () => {
       >
         <h1 className="text-center page-title">Sign Up</h1>
         <div className="input-group">
-          <label htmlFor="email">Enter your name</label>
+          <label htmlFor="name">Enter your name</label>
           <input
             type="text"
             name="name"

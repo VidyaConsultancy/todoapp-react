@@ -47,6 +47,7 @@ action => dispatch => reducer/state => view => (event => action) => dispatch
 5. Link reducer(s) with the store
 6. Connect components with the store
 7. Dispatch action(s)/action creator(s) from the connected components
+8. Get state in component from the store
 
 ### Redux Store parts
 - **reducer** is a function that get two parameters `state` and `action`. Based on action it manipulates the state and returns the updated state.

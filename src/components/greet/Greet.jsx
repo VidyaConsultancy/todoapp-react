@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { loginStart } from "../../store/auth/slice";
 import { Timer } from "../timer/Timer";
 
-export class Greet extends React.Component {
+class GreetComponent extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
@@ -30,9 +32,23 @@ export class Greet extends React.Component {
     return (
       <>
         <h1 ref={this.headingRef}>Hello {this.props.name}</h1>
+        <p>{this.props.isLoading ? 'Is Loading' : 'Not loading'}</p>
         <Timer timer={this.state.timer} />
         <button onClick={this.updateAnotherProperty}>Click Me!</button>
       </>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  isLoading: state.auth.loading
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loginStart: () => dispatch(loginStart()),
+});
+
+// const connectComp = connect(mapStateToProps, mapDispatchToProps);
+// export const Greet = connectComp(GreetComponent);
+export const Greet = connect(mapStateToProps, mapDispatchToProps)(GreetComponent);
+// export const Greet = GreetComponent;

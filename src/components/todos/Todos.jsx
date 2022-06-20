@@ -54,7 +54,7 @@ export const Todos = () => {
           setTodos(filteredTodos);
         }
       })
-      .then((error) => console.error(error));
+      .catch((error) => console.error(error));
   };
 
   useEffect(() => {

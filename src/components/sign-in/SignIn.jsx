@@ -1,12 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { loginStart } from "../../store/auth/actions";
 import { loginStart } from "../../store/auth/slice";
 import "./SignIn.css";
 
 export const SignIn = () => {
+  const authState = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
@@ -77,7 +78,7 @@ export const SignIn = () => {
         </div>
         <div className="input-group">
           <button type="submit" className="btn btn-primary">
-            Sign In
+            {authState.loading ? "Loading..." : "Sign In"}
           </button>
         </div>
       </form>
