@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 export const Navbar = () => (
-  <menu className="navbar">
+  <menu className="navbar" data-testid="navbar">
     <li className="navbar-item">
       <NavLink className="navbar-link" to={"/"}>
         Home

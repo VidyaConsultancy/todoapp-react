@@ -57,3 +57,18 @@ action => dispatch => reducer/state => view => (event => action) => dispatch
 Install below developer tools as chrome extension
 - React developer tools
 - Redux developer tools
+
+## Testing
+- **Manual Testing**
+    Manually testing the react app by running the app and checking every feature for technical & behaviour sanity in browser.
+
+- **Automation Testing**
+    Write some code to verify that the app is working technically and behaviourally as expected.
+    - Unit Testing - technical + isolation
+    - End to End Testing - technical + behavior + integration
+
+- Why do we need unit tests?
+    We can be confident that our react app will work as expected.
+
+- TDD - Test Driven Development
+    Write Test cases first then write code to satisfy them.

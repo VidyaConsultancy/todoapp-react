@@ -1,19 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { loginStart } from "../../store/auth/actions";
-import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
-  login,
-} from "../../store/auth/slice";
+import { login } from "../../store/auth/slice";
 import "./SignIn.css";
 
 export const SignIn = () => {
   const authState = useSelector((state) => state.auth);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState(false);
@@ -30,35 +22,14 @@ export const SignIn = () => {
     }
     setFormError(false);
     dispatch(login(user));
-    // dispatch(loginStart());
-    // axios
-    //   .post("http://localhost:3001/api/login", user, {
-    //     headers: { "content-type": "application/json" },
-    //   })
-    //   .then((response) => {
-    //     if (response.data.success) {
-    //       setUser({ email: "", password: "" });
-    //       const token = response.data.data.token;
-    //       const user = response.data.data.user;
-    //       dispatch(loginSuccess({ token, user }));
-    //       localStorage.setItem("accessToken", token);
-    //       localStorage.setItem("user", JSON.stringify(user));
-    //       sessionStorage.setItem("accessToken", token);
-    //       navigate("/todos");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     dispatch(loginFailure({ error: error.response.data }));
-    //     console.error(error.response.data.message);
-    //     setFormError(true);
-    //   });
   };
 
   return (
-    <div className="auth-container sign-in">
+    <div className="auth-container sign-in" data-testid="authContainer">
       <form
         className="auth-form sign-in-form spaced-form"
         onSubmit={handleUserLogin}
+        data-testid="signInForm"
       >
         <h1 className="text-center page-title">Sign In</h1>
         <div className="input-group">
@@ -90,6 +61,7 @@ export const SignIn = () => {
             type="submit"
             className="btn btn-primary"
             disabled={authState.loading}
+            data-testid="signInBtn"
           >
             {authState.loading ? "Loading..." : "Sign In"}
           </button>
