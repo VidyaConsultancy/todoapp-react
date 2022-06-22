@@ -4,6 +4,14 @@ pipeline {
         npm_config_cache = "npm-cache"
     }
     stages {
+        stage("Check versions") {
+            steps {
+                sh '''
+                    node --version
+                    npm --version
+                '''
+            }
+        }
         stage("Build") {
             steps {
                 sh "npm install"
