@@ -1,18 +1,12 @@
 pipeline {
-    agent {
-  docker {
-    args '-p 3000:3000'
-    image 'node:16-bullseye'
-    reuseNode true
-  }
-}
+    agent any
     environment {
         npm_config_cache = "npm-cache"
     }
     stages {
         stage("Check versions") {
             steps {
-                sh '''
+                bat '''
                     node --version
                     npm --version
                 '''
@@ -20,12 +14,12 @@ pipeline {
         }
         stage("Build") {
             steps {
-                sh "npm install"
+                bat "npm install"
             }
         }
         stage("Release") {
             steps {
-                sh "npm run build"
+                bat "npm run build"
             }
         }
     }
