@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-    any {
-     image 'node:16-alpine3.15'
-     args '-p 3000:3000'
-    }
-  }
+    agent any
     environment {
         npm_config_cache = "npm-cache"
     }
